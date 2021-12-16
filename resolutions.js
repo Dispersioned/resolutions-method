@@ -36,7 +36,7 @@ function compareAndGetItem(x, y) {
 			}
 		}
 	}
-	// console.log('ANTIes ', ANTIes);
+	console.log('ANTIes ', ANTIes);
 	let result = 'none';
 	if (ANTIes === 1) {
 		// delete '-' from charToRemove
@@ -63,7 +63,6 @@ function compareAndGetItem(x, y) {
 				haveMinuses.set(char, 0);
 			}
 		}
-		console.log([...haveMinuses.keys()]);
 		let sortedChars = [...haveMinuses.keys()].sort();
 
 		result = '';
@@ -85,6 +84,7 @@ function iterate(arr) {
 		for (let j = i + 1; j < length; j++) {
 			console.log('items: ', arr[i], ' ', arr[j]);
 			let newItem = compareAndGetItem(arr[i], arr[j]);
+			// console.log('current array state: ', arr);
 			if (arr.includes(newItem)) {
 				newItem = 'none';
 			}
@@ -103,13 +103,7 @@ function resolve(arr, safe = 1) {
 	let curLength, newLength;
 
 	while (true) {
-		// arr.map((item) => {
-		// 	item = item.split('').sort().join('');
-		// 	console.log(item);
-		// 	return item;
-		// });
-		// console.log('sorted arr: ', arr);
-		console.log('arr: ', arr);
+		// console.log('arr: ', arr);
 
 		curLength = arr.length;
 		arr = iterate(arr);
@@ -124,24 +118,20 @@ function resolve(arr, safe = 1) {
 			for (let i = 0; i < 5; i++) {
 				console.log('BREAKING SAFE');
 			}
-			break
-		};
+			break;
+		}
 	}
 
 	console.log('no new items can be created');
 	console.log('Start arr: ', arrCopy);
 	console.log('current arr: ', arr);
-	for (item of arr) {
-		// if (item.length === 1 || (item.length === 2 && item[0] === '-')) {
-		// 	console.log(item);
-		// }
-	}
-	// resolve(newArr);
-	// return arr
 }
 
 // let input = '-A-BCD AB A-D B-C -C-D -AB A-B';
-let input = '-AD AC DE B-D C D';
+// let input = '-AD AC DE B-D -C-D'; // 18.3doc2
+// let input = '-AD AC DE B-D -A-BE'; // 18.3doc1
+// let input = '-AB A-B -CD C-D ABCD -A-B -A-D -C-B -C-D';
+let input = 'C -E -BD -AB -AC A-C -DE DE';
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
-resolve(arr, (safe = 0));
+resolve(arr, 0);
