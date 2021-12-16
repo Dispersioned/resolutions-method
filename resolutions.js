@@ -54,11 +54,28 @@ function compareAndGetItem(x, y) {
 				chars.add(char);
 			}
 		}
-		result = '';
+		// let sortedResultChars = chars.values().
+		let haveMinuses = new Map();
 		for (char of chars) {
-			result += char;
+			if (char[0] === '-') {
+				haveMinuses.set(char[1], 1);
+			} else {
+				haveMinuses.set(char, 0);
+			}
+		}
+		console.log([...haveMinuses.keys()]);
+		let sortedChars = [...haveMinuses.keys()].sort();
+
+		result = '';
+		for (char of sortedChars) {
+			if (haveMinuses.get(char) === 1) {
+				result += '-' + char;
+			} else {
+				result += char;
+			}
 		}
 	}
+	// console.log('result of new item is: ', result);
 	return result;
 }
 
@@ -81,12 +98,19 @@ function iterate(arr) {
 	return arr;
 }
 
-function resolve(arr) {
+function resolve(arr, safe = 1) {
 	let i = 0;
 	let curLength, newLength;
 
 	while (true) {
-		console.log(arr);
+		// arr.map((item) => {
+		// 	item = item.split('').sort().join('');
+		// 	console.log(item);
+		// 	return item;
+		// });
+		// console.log('sorted arr: ', arr);
+		console.log('arr: ', arr);
+
 		curLength = arr.length;
 		arr = iterate(arr);
 		newLength = arr.length;
@@ -96,23 +120,23 @@ function resolve(arr) {
 		}
 
 		i++;
-		// if (i > 7) break;
+		if (i > 15 && safe) break;
 	}
 
 	console.log('no new items can be created');
 	console.log('Start arr: ', arrCopy);
-	// console.log('current arr: ', arr)
-	for(item of arr) {
-		if(item.length === 1 || item.length === 2 && item[0] === '-') {
-			console.log(item);
-		}
-		// console.log(item);
+	console.log('current arr: ', arr);
+	for (item of arr) {
+		// if (item.length === 1 || (item.length === 2 && item[0] === '-')) {
+		// 	console.log(item);
+		// }
 	}
 	// resolve(newArr);
 	// return arr
 }
 
 let input = '-A-BCD AB A-D B-C -C-D -AB A-B';
+// let input = 'DB-C A-DF';
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
-resolve(arr);
+resolve(arr, (safe = 0));
