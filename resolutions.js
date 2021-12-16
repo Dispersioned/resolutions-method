@@ -131,7 +131,8 @@ function resolve(arr, safe = 1) {
 // let input = '-AD AC DE B-D -C-D'; // 18.3doc2
 // let input = '-AD AC DE B-D -A-BE'; // 18.3doc1
 // let input = '-AB A-B -CD C-D ABCD -A-B -A-D -C-B -C-D';
-let input = 'C -E -BD -AB -AC A-C -DE DE';
+// let input = 'C -E -BD -AB -AC A-C -DE DE';
+let input = 'A-C B-D -A-B C D'
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
 resolve(arr, 0);
