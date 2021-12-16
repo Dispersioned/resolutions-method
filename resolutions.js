@@ -127,12 +127,17 @@ function resolve(arr, safe = 1) {
 	console.log('current arr: ', arr);
 }
 
-// let input = '-A-BCD AB A-D B-C -C-D -AB A-B';
-// let input = '-AD AC DE B-D -C-D'; // 18.3doc2
-// let input = '-AD AC DE B-D -A-BE'; // 18.3doc1
-// let input = '-AB A-B -CD C-D ABCD -A-B -A-D -C-B -C-D';
-// let input = 'C -E -BD -AB -AC A-C -DE DE';
-let input = 'A-C B-D -A-B C D'
+// ? Вводить дизьюнкты в ЛЕКСИКОГРАФИЧЕСКОМ порядке
+let input;
+// ? input = '-A-BCD AB A-D B-C -C-D -AB A-B'; // 18.1doc1 ДОКАЗУЕМО
+// input = '-A-BCD AB A-D B-C -C-D C-D -CD'; // 18.1doc2 НЕ ДОКАЗУЕМО
+// input = 'AB-C BC-D -A -B'; // 18.2doc1 НЕ ДОКАЗУЕМО
+// input = 'AB-C BC-D D'; // 18.2doc2 НЕ ДОКАЗУЕМО
+// input = '-AD AC DE B-D AB A -E'; // 18.3doc1 НЕ ДОКАЗУЕМО
+// input = '-AD AC DE B-D -C-D'; // 18.3doc2 // НЕ ДОКАЗУЕМО
+
+input = '';
+
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
 resolve(arr, 0);
