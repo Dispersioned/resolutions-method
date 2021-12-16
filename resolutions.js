@@ -36,7 +36,7 @@ function compareAndGetItem(x, y) {
 			}
 		}
 	}
-	console.log('ANTIes ', ANTIes);
+	// console.log('ANTIes ', ANTIes);
 	let result = 'none';
 	if (ANTIes === 1) {
 		// delete '-' from charToRemove
@@ -82,13 +82,15 @@ function iterate(arr) {
 	let length = arr.length;
 	for (let i = 0; i < length - 1; i++) {
 		for (let j = i + 1; j < length; j++) {
-			console.log('items: ', arr[i], ' ', arr[j]);
 			let newItem = compareAndGetItem(arr[i], arr[j]);
 			// console.log('current array state: ', arr);
 			if (arr.includes(newItem)) {
 				newItem = 'none';
 			}
-			console.log('newItem ', newItem);
+			if (newItem !== 'none') {
+				console.log('items: ', arr[i], ' ', arr[j]);
+				console.log('newItem ', newItem);
+			}
 			if (newItem !== 'none') {
 				arr.push(newItem);
 				return arr;
@@ -136,7 +138,7 @@ let input;
 // input = '-AD AC DE B-D AB A -E'; // 18.3doc1 НЕ ДОКАЗУЕМО
 // input = '-AD AC DE B-D -C-D'; // 18.3doc2 // НЕ ДОКАЗУЕМО
 
-input = '';
+input = 'AB-C BC-D -A -B';
 
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
