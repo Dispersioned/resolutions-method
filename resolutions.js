@@ -131,15 +131,24 @@ function resolve(arr, safe = 1) {
 
 // ? Вводить дизьюнкты в ЛЕКСИКОГРАФИЧЕСКОМ порядке
 let input;
-// ? input = '-A-BCD AB A-D B-C -C-D -AB A-B'; // 18.1doc1 ДОКАЗУЕМО
-// input = '-A-BCD AB A-D B-C -C-D C-D -CD'; // 18.1doc2 НЕ ДОКАЗУЕМО
-// input = 'AB-C BC-D -A -B'; // 18.2doc1 НЕ ДОКАЗУЕМО
-// input = 'AB-C BC-D D'; // 18.2doc2 НЕ ДОКАЗУЕМО
-// input = '-AD AC DE B-D AB A -E'; // 18.3doc1 НЕ ДОКАЗУЕМО
-// input = '-AD AC DE B-D -C-D'; // 18.3doc2 // НЕ ДОКАЗУЕМО
+// 18.1doc1 (НЕ) ДОКАЗУЕМО
+// input = '-A-BCD AB A-D B-C -C-D -AB A-B';
+// input = '-A-BCD AB A-D B-C -C-D -A-B AB'; // reverse
+// 18.1doc2 НЕ ДОКАЗУЕМО
+// input = '-A-BCD AB A-D B-C -C-D C-D -CD';
+// input = '-A-BCD AB A-D B-C -C-D CD -C-D'; // reverse
+// 18.2doc1 НЕ ДОКАЗУЕМО
+// input = 'AB-C BC-D -A -B';
 
-input = 'AB-C BC-D -A -B';
+// 18.2doc2 НЕ ДОКАЗУЕМО
+// input = 'AB-C BC-D D';
+// 18.3doc1 НЕ ДОКАЗУЕМО
+// input = '-AD AC DE B-D AB A B -E';
+// 18.3doc2 // НЕ ДОКАЗУЕМО
+// input = '-AD AC DE B-D -C-D';
 
-let arr = input.split(' '); // result should be 'B'
+// input = '-AD AC DE B-D AB -A-BE';
+
+let arr = input.split(' ');
 let arrCopy = [...arr];
 resolve(arr, 0);
