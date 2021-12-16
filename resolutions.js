@@ -96,17 +96,23 @@ function resolve(arr) {
 		}
 
 		i++;
-		if (i > 7) break;
+		// if (i > 7) break;
 	}
 
 	console.log('no new items can be created');
 	console.log('Start arr: ', arrCopy);
-	console.log('current arr: ', arr);
+	// console.log('current arr: ', arr)
+	for(item of arr) {
+		if(item.length === 1 || item.length === 2 && item[0] === '-') {
+			console.log(item);
+		}
+		// console.log(item);
+	}
 	// resolve(newArr);
 	// return arr
 }
 
-let input = 'BD -C-D A-D -ACD AB -A-B';
+let input = '-A-BCD AB A-D B-C -C-D -AB A-B';
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
 resolve(arr);
