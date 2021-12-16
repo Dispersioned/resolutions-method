@@ -1,2 +1,2 @@
 # resolutions-method
-Chech clauses for veracity with resolutions method
+Check clauses for veracity with resolutions method
