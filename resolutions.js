@@ -120,7 +120,12 @@ function resolve(arr, safe = 1) {
 		}
 
 		i++;
-		if (i > 15 && safe) break;
+		if (i > 15 && safe) {
+			for (let i = 0; i < 5; i++) {
+				console.log('BREAKING SAFE');
+			}
+			break
+		};
 	}
 
 	console.log('no new items can be created');
@@ -135,8 +140,8 @@ function resolve(arr, safe = 1) {
 	// return arr
 }
 
-let input = '-A-BCD AB A-D B-C -C-D -AB A-B';
-// let input = 'DB-C A-DF';
+// let input = '-A-BCD AB A-D B-C -C-D -AB A-B';
+let input = '-AD AC DE B-D C D';
 let arr = input.split(' '); // result should be 'B'
 let arrCopy = [...arr];
 resolve(arr, (safe = 0));
